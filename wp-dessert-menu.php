@@ -15,7 +15,7 @@
  * Description: Grabs a WordPress Navigation Menu, and puts it in your Admin Bar
  * Author: johnjamesjacoby
  * Author URI: http://johnjamesjacoby.com
- * Version: 1.0
+ * Version: 1.0.1
  */
 
 // Exit if accessed directly
@@ -55,11 +55,12 @@ function wp_dessert_menu_quick_links( &$wp_admin_bar ) {
 	 */
 
 	// Variables
-	$menu_name = 'Quick Links';        // The name of the menu you created
-	$menu_title = __( 'Quick Links' ); // The text at the root of that menu
+	$menu_name  = 'Quick Links';       // The name of the menu you want to grab
+	$menu_title = __( 'Quick Links' ); // The text of the root menu item
+	$menu_link  = home_url();          // The link for the root menu item
 
 	// This actually adds the menu.
-	wp_dessert_menu( &$wp_admin_bar, $menu_name, $menu_title );
+	wp_dessert_menu( &$wp_admin_bar, $menu_name, $menu_title, $menu_link );
 }
 add_action( 'admin_bar_menu', 'wp_dessert_menu_quick_links', 1000 );
 
@@ -75,8 +76,10 @@ add_action( 'admin_bar_menu', 'wp_dessert_menu_quick_links', 1000 );
  *
  * @param WP_Admin_bar $wp_admin_bar The WordPress Admin bar
  * @param string $menu_name The name of the menu you want to grab
+ * @param string $menu_title The text of the root menu item
+ * @param string $menu_link The link for the root menu item
  */
-function wp_dessert_menu( &$wp_admin_bar, $menu_name = 'Quick Links', $menu_title = 'Quick Links' ) {
+function wp_dessert_menu( &$wp_admin_bar, $menu_name = 'Quick Links', $menu_title = 'Quick Links', $menu_link = '#' ) {
 
 	// Sanity check on admin bar global
 	if ( !is_object( $wp_admin_bar ) )
@@ -94,7 +97,7 @@ function wp_dessert_menu( &$wp_admin_bar, $menu_name = 'Quick Links', $menu_titl
     $wp_admin_bar->add_menu( array(
         'id'    => 'wp-dessert-menu-' . $menu->term_id . '-item-0',
         'title' => $menu_title,
-		'href'  => '#',
+		'href'  => $menu_link,
     ) );
 
 	// Loop through menu items

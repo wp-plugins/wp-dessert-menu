@@ -3,7 +3,7 @@ Contributors: johnjamesjacoby
 Tags: admin, menus, nav, navigation, admin menu, nav menu, navigation menu
 Requires at least: 3.1
 Tested up to: 3.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Grabs a WordPress Navigation Menu, and puts it in your Admin Bar
 
@@ -21,6 +21,9 @@ This little plugin has one simple purpose, to put a WordPress Nav Menu in your A
 
 
 == Changelog ==
+
+= 1.0.1 =
+* Add link parameter to set custom root level URL
 
 = 1.0 =
 * Public release
